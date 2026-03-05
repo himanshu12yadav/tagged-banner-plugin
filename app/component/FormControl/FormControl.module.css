@@ -1,0 +1,27 @@
+/**
+ * @author Sprinix Team
+ * @copyright Copyright (c) 2023 Sprinix Technolabs (https://www.sprinix.com).
+ */
+
+.wrapper {
+  margin-bottom: 10px;
+}
+
+.inputRed {
+  color: red;
+}
+
+.inputGreen {
+  color: green;
+}
+
+
+/* Adding additional specificity with multiple selectors */
+.formContainer :global(.Polaris-BlockStack) :global(.Polaris-FormLayout__Item.Polaris-FormLayout--grouped) {
+  min-width: 20% !important;
+}
+
+/* Alternative approach with direct targeting */
+:global(.Polaris-BlockStack .Polaris-FormLayout__Item.Polaris-FormLayout--grouped) {
+  min-width: 20% !important;
+}

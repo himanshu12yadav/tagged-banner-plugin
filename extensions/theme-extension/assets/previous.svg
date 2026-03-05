@@ -1,0 +1,22 @@
+<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g filter="url(#filter0_b_106_6950)">
+<rect width="24.5" height="24.5" rx="1.96" fill="url(#paint0_linear_106_6950)" fill-opacity="0.26"/>
+</g>
+<rect x="19.6016" y="4.41016" width="15.19" height="15.19" transform="rotate(90 19.6016 4.41016)" fill="url(#pattern0_106_6950)"/>
+<defs>
+<filter id="filter0_b_106_6950" x="-1.911" y="-1.911" width="28.322" height="28.322" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="0.9555"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_106_6950"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_106_6950" result="shape"/>
+</filter>
+<pattern id="pattern0_106_6950" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_106_6950" transform="scale(0.0104167)"/>
+</pattern>
+<linearGradient id="paint0_linear_106_6950" x1="12.25" y1="0" x2="12.25" y2="24.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#EBEBEB"/>
+<stop offset="1" stop-color="#BEBEBE"/>
+</linearGradient>
+<image id="image0_106_6950" width="96" height="96" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAABkUlEQVR4nO3cXU7CUBRF4TMZ67v7AcYM4xJ9kd4ZYJrQxFR+2kI4956zvqSJD+ZK1paiiWIGAAAAAAAAAAAAAAAAIJt3M9ub2eF8DR933g8qS6/hsKOZnSZXb2ab5z7uEDbnNtNex7Uj7C8cNl6FEf7FLzd67WyFrxsHjiNs1xwcjK7cKf5e32sOPtw5lBFsVvzh+lwzwG7GwZlvR5s7t52Hb0HdlRcVRrBF8ftHfhL6MLOfBSNkeE3QzNvO0+4OjOAYf8QI5hefEcw/fuYRVEv8jCOotviZRlCt8TOMoNrjRx5BrcSPOIJaix9pBLUaP8IIaj1+yyMoSvwWR1C0+C2NoKjxWxhB0ePXPIKyxK9xBGWLX9MIyhq/hhGUPb7nCCK+3wgivt8IIr7fCCK+3wgivt8IIr7fCCK+3wgivt8IIr7fXx6XhZ8b9jdcz2fCifh1j1D4zvcboRDf75lQiO83QiG+3wiF+H4jFOL7vSVAT/zX6SZvijH8H+7bC78+AAAAAAAAAAAAAAAAAACwS34B7LaEo9HLkDAAAAAASUVORK5CYII="/>
+</defs>
+</svg>

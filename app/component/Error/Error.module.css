@@ -1,0 +1,118 @@
+/**
+ * @author Sprinix Team
+ * @copyright Copyright (c) 2023 Sprinix Technolabs (https://www.sprinix.com).
+ */
+
+.errorContainer {
+  padding: 20px;
+  text-align: center;
+}
+
+.errorIcon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  opacity: 0.6;
+}
+
+.errorTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--p-color-text);
+}
+
+.errorMessage {
+  font-size: 14px;
+  color: var(--p-color-text-subdued);
+  margin-bottom: 16px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.errorDetails {
+  font-size: 12px;
+  color: var(--p-color-text-subdued);
+  background: var(--p-color-background-subdued);
+  padding: 12px;
+  border-radius: 6px;
+  margin: 16px 0;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: monospace;
+  text-align: left;
+  overflow-x: auto;
+}
+
+.errorActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.inlineError {
+  padding: 12px 16px;
+  background: var(--p-color-background-critical-subdued);
+  border: 1px solid var(--p-color-border-critical);
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.inlineError .errorTitle {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: var(--p-color-text-critical);
+}
+
+.inlineError .errorMessage {
+  font-size: 13px;
+  margin-bottom: 0;
+  color: var(--p-color-text-critical);
+}
+
+.networkError {
+  border-color: var(--p-color-border-critical);
+  background: var(--p-color-background-critical-subdued);
+}
+
+.validationError {
+  border-color: var(--p-color-border-warning);
+  background: var(--p-color-background-warning-subdued);
+}
+
+.validationError .errorTitle {
+  color: var(--p-color-text-warning);
+}
+
+.validationError .errorMessage {
+  color: var(--p-color-text-warning);
+}
+
+.retryButton {
+  min-width: 120px;
+}
+
+.homeButton {
+  min-width: 100px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .errorContainer {
+    padding: 16px;
+  }
+  
+  .errorActions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .errorDetails {
+    font-size: 11px;
+    padding: 10px;
+  }
+}

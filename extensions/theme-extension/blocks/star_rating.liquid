@@ -1,0 +1,263 @@
+{%- comment -%}
+/**
+ * @author Sprinix Team
+ * @copyright Copyright (c) 2024 Sprinix Technolabs
+ * @link https://www.sprinix.com
+ * @version 1.0.0
+ * @since 1.0.0
+ * @license Proprietary
+ * @package Sprinix
+ */
+
+ {%- endcomment -%}
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.slider {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.slide-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.slide-caption h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+span.tooltip:after {
+      content: '';
+    position: absolute;
+    left: 48px;
+    z-index: -1;
+    top: 45px;
+    width: 20px;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 9px solid #fff;
+}
+.tooltip a {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider-controls button {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    color: #333;
+    padding: 1rem;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .4);
+    cursor: grab;
+    transition: transform 0.2s ease-in-out;
+    z-index: 10000;
+
+  }
+
+  .circle:hover {
+    transform: scale(1.2);
+    outline: 1px solid #fff;
+  }
+
+  .hole {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+
+  .tooltip {
+       visibility: hidden;
+    min-width: 120px;
+    background-color: white;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 10000;
+    left: 50%;
+    margin-top: -54px;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    line-height: normal;
+    width: 100%;
+    max-height: 45px;
+    min-height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .circle:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    cursor: pointer
+  }
+
+</style>
+
+
+
+<section class="section">
+
+  {% assign slider = block.settings.sliderId  %}
+
+
+  {% assign slider_ID = shop.metaobjects.sliders[slider].system.id %}
+
+
+
+  {% assign git = "gid://shopify/Metaobject/" | append: slider_ID | strip %}
+
+  {% assign tags = shop.metaobjects.tag_collection.values | where: "slider_id", git  %}
+
+  <div class="slider" style="position: relative;">
+    {% for tag in tags %}
+      {% assign tagId = "gid://shopify/Metaobject/" |  append: tag.system.id %}
+      {% assign pointers = shop.metaobjects.pointers.values | where: "tag_id", tagId %}
+
+
+
+      <div class="slide {% if forloop.first %}active{% endif %}">
+        <img src="{{ tag.image_id |  image_url }}" style="width: 100%;height:100%;" alt="Image 1" width="100%" height="100%">
+        <div class="pointer-collection">
+          {% for p in pointers %}
+            <div style="position: absolute; left:{{ p.pos_x }}%; top:{{ p.pos_y }}%;" class="circle">
+              <div class="hole">
+                <div style="padding: 10px 0;"></div>
+              </div>
+              <span class="tooltip">{{p.data}}</span>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    {% if tags.size > 1 %}
+      <div class="slider-controls">
+          <button class="prev-btn"><img src="{{ 'previous.svg' | asset_url }}" ></button>
+        <button class="next-btn"><img src="{{ 'Next.svg' | asset_url }}"/></button>
+      </div>
+    {% endif %}
+
+  </div>
+
+</section>
+
+<script defer>
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const tags = {{ tags | json }}
+    const tagCount = tags.length;
+
+
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const slides = document.querySelectorAll('.slide');
+
+    let currentSlide = 0;
+
+    function showSlide(index){
+        slides.forEach((slide, i)=>{
+            slide.classList.remove('active');
+            if (i === index) slide.classList.add('active');
+        })
+    }
+
+    function nextSlide(){
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function previousSlide(){
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+
+    }
+
+    if (prevBtn && nextBtn){
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', previousSlide);
+    }
+
+    })
+
+
+
+</script>
+
+
+{% schema %}
+{
+  "name": "Slider",
+  "target": "section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sliderId",
+      "label": "Slider name"
+    }
+  ]
+}
+{% endschema %}

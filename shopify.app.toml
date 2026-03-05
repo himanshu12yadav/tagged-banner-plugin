@@ -1,0 +1,33 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "e038bc95545d4b62076907e87479f65d"
+name = "Sprinix-tagged-banner"
+handle = "tagged-banner"
+application_url = "https://taggedbanner-app.sprinix.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "quickstart-dcd3b13f.myshopify.com"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_content,read_customers,read_files,read_metaobject_definitions,read_metaobjects,read_themes,write_content,write_customers,write_files,write_metaobject_definitions,write_metaobjects,write_themes"
+
+[auth]
+redirect_urls = [
+  "https://taggedbanner-app.sprinix.com/auth/callback",
+  "https://taggedbanner-app.sprinix.com/auth/shopify/callback",
+  "https://taggedbanner-app.sprinix.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2025-01"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app_subscriptions/update", "app/uninstalled" ]
+  uri = "/webhooks"
+  compliance_topics = [ "customers/data_request", "customers/redact", "shop/redact" ]
+
+[pos]
+embedded = false

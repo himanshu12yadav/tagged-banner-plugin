@@ -1,0 +1,36 @@
+/**
+ * @author Sprinix Team
+ * @copyright Copyright (c) 2023 Sprinix Technolabs (https://www.sprinix.com).
+ */
+
+.cirlceContainer{
+  position:absolute;
+  z-index: 400;
+}
+
+.circle {
+  width: 30px; /* Further reduced size */
+  height: 30px; /* Further reduced size */
+  border-radius: 50%;
+  background-color: #3498db;
+  position: absolute;
+  cursor: grab;
+}
+
+.hole {
+  width: 10px; /* Further reduced size */
+  height: 10px; /* Further reduced size */
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 10px; /* Adjusted position */
+  left: 10px; /* Adjusted position */
+}
+
+.item {
+  cursor: default;
+}
+
+.move {
+  cursor: grab;
+}

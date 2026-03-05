@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app-tagged-banner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shopify-tagged-banner
+    environment:
+      SHOPIFY_APP_URL: https://supply-attractive-chen-dept.trycloudflare.com
+      DATABASE_URL: file:dev.sqlite
+      SHOPIFY_APP_HANDLE: tagged-banner
+      SHOPIFY_API_KEY: e038bc95545d4b62076907e87479f65d
+      SHOPIFY_API_SECRET: 39af44f45b120bcf33599c2a4319a2c8
+    ports:
+      - "127.0.0.1:${APP_PORT}:3000"
+    restart: unless-stopped
